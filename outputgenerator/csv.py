@@ -13,7 +13,7 @@ class CSVGenerator(BaseGenerator):
     def add_interval(self, timestamp: datetime, consumption: float):
         self.interval_data.append([timestamp, consumption])
 
-    def generate_interval(self, nmi):
+    def generate_interval(self, nmi: str):
         if nmi == "":
             raise RuntimeError("NMI is not defined")
         

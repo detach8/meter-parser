@@ -9,7 +9,7 @@ class MockGenerator(BaseGenerator):
     def add_interval(self, timestamp: datetime, consumption: float):
         self.intervals += 1
 
-    def generate_interval(self, nmi):
+    def generate_interval(self, nmi: str):
         self.generated_intervals += self.intervals
         self.intervals = 0
         return
