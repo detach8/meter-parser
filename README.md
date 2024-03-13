@@ -66,6 +66,11 @@ could easily be reused in, for example, a web service.
 
 ### Design patterns
 
+The application is written in a typical layered architecture, with
+[meter_parser.py](meter_parser.py) as the presentation layer,
+[nem12parser](nem12parser/) module as the business layer, and
+[outputgenerator](outputgenerator/) module as the persistence layer.
+
 For purposes of this assignment, a sample CSV output generator (as a
 replacement of the default SQL output generator) is provided to demonstrate
 *Dependency Inversion*.
