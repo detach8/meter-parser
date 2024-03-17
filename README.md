@@ -86,7 +86,7 @@ instead to test. As a result, the `CREATE TABLE` query is slightly different:
 
     CREATE TABLE meter_readings (
         id INT PRIMARY KEY,
-        nmi VARCHAR(10) NOT NULL,
+        nmi VARCHAR(13) NOT NULL,
         timestamp CHAR(19) NOT NULL,
         consumption NUMERIC NOT NULL,
         UNIQUE (nmi, timestamp)
@@ -99,19 +99,20 @@ as originally provided in the assignment will be needed in production.
 In addition, the `nmi` column length has been increased to `VARCHAR(13)` to
 accomodate the suffix, as it is unclear whether the `nmi_suffix` is part of
 the `nmi` and if the values of the same time period should be added together.
-The provided sample data has repeated data for the same time period, although
-coincidentally also using the same interval. It can not be assumed that the
-intervals remain the same in other data files, so I did not perform any
-further aggregation. I am unable to discern this detail from the
+
+The provided sample data has repeated data for the same NMI in the same time
+period - although coincidentally also having the same interval. It can not be
+assumed that the intervals remain the same in other data files, so I did not
+perform any further aggregation. I am unable to discern this detail from the
 specificiations sheet: I might need deeper understanding or context of the
 Energy Market industry.
 
 Also since most DBMSes are unlikely to change, the SQL queries generated are
 designed to generate multi-row `INSERT` for better performance and smaller
-queries. The generated SQL should work for most SQL engines (including
+queries. The generated SQL statements should work for most SQL engines (incl.
 Postgres and MySQL). However, some engines, e.g. Oracle requires a different
 query format for `DATETIME`. If the DBMS is expected to change, then using an
-ORM may be better, but may impact performance.
+ORM may be better - but may impact performance.
 
 ## Additional Notes
 
